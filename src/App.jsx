@@ -1,5 +1,5 @@
 import Navbar from "./Pages/Navbar";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import ResumeLanding from "./Pages/ResumeLanding";
 import { Box } from "@chakra-ui/react";
 import "./index.css";
