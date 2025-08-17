@@ -1,26 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      // Redirect all 404s to index.html with hash routing
-      (function () {
-        var l = window.location;
-        var repoName = "/Resume-builder-website";
-        var newURL =
-          l.protocol +
-          "//" +
-          l.host +
-          repoName +
-          "/#" +
-          l.pathname.replace(repoName, "");
-        window.location.replace(newURL);
-      })();
+      // Redirect all GitHub Pages 404s to index.html
+      var path = window.location.pathname.replace("/Resume-builder-website", "");
+      window.location.replace("/Resume-builder-website/#" + path);
     </script>
   </head>
-  <body>
-    Redirecting...
-  </body>
+  <body></body>
 </html>
-
