@@ -9,7 +9,7 @@ import ResumeForm from "./Pages/Resumeform";
 
 function App() {
   return (
-    <BrowserRouter basename="/Resume-builder-website">
+    <HashRouter basename="/Resume-builder-website">
       <Box className="no-scrollbar">
         <Navbar />
         <Routes>
@@ -19,7 +19,7 @@ function App() {
           <Route path="/ResumeForm" element={<ResumeForm />} />
         </Routes>
       </Box>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
