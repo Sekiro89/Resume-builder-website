@@ -20,7 +20,7 @@ export default function Navbar(){
                     bg="white"
                     colour="black"
                     _hover={{bg:"gray:800"}}
-                    onClick={()=> navigate("/editor")}
+                    onClick={()=> navigate("/ResumeForm")}
                     >
                         Build My Resume →
                     </Button>

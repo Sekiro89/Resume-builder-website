@@ -5,6 +5,7 @@ import { Box } from "@chakra-ui/react";
 import "./index.css";
 import Login from "./Pages/Loginresume";
 import Dashboard from "./Pages/Resume_edit";
+import ResumeForm from "./Pages/Resumeform";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<ResumeLanding />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/ResumeForm" element={<ResumeForm />} />
         </Routes>
       </Box>
     </BrowserRouter>

@@ -1,62 +1,103 @@
-import { Box, Heading, Button, VStack, HStack, Text, SimpleGrid, Image } from "@chakra-ui/react";
-import { AddIcon, DownloadIcon, TimeIcon } from "@chakra-ui/icons";
+import { Box, SimpleGrid, Text, Icon, Image } from "@chakra-ui/react";
+import { AddIcon, DownloadIcon } from "@chakra-ui/icons";
+import template1 from "../templates/Loginpageimg.jpeg"; // adjust path
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  // Placeholder history data
-  const history = [
-    { id: 1, title: "Frontend Developer Resume", lastEdited: "2 days ago", img: "/templates/template1.jpeg" },
-    { id: 2, title: "UI/UX Designer Resume", lastEdited: "5 days ago", img: "/templates/template2.jpeg" },
-    { id: 3, title: "Backend Engineer Resume", lastEdited: "1 week ago", img: "/templates/template3.jpeg" },
-  ];
+  
+  const navigate = useNavigate();
 
   return (
-    <Box bg="black" color="white" minH="100vh" px={8} py={10}>
-      <Heading size="xl" mb={8}>
-        Dashboard
-      </Heading>
+    <Box p={8} bg="black" minH="100vh" color="white">
+      <Text fontSize="5xl" fontWeight="bold" mb={6}>
+        Resumes
+      </Text>
 
-      {/* Action Buttons */}
-      <HStack spacing={4} mb={10}>
-        <Button leftIcon={<AddIcon />} colorScheme="teal">
-          Create New Resume
-        </Button>
-        <Button leftIcon={<DownloadIcon />} colorScheme="blue">
-          Import Resume
-        </Button>
-      </HStack>
-
-      {/* History Section */}
-      <Heading size="lg" mb={4}>
-        Recent Activity
-      </Heading>
-      <SimpleGrid columns={[1, 2, 3]} spacing={6}>
-        {history.map((item) => (
-          <Box
-            key={item.id}
-            bg="gray.900"
-            borderRadius="md"
-            overflow="hidden"
-            shadow="md"
-            _hover={{ transform: "scale(1.02)", transition: "0.2s" }}
-          >
-            <Image src={item.img} alt={item.title} h="200px" w="full" objectFit="cover" />
-            <Box p={4}>
-              <Heading size="md" mb={2}>
-                {item.title}
-              </Heading>
-              <HStack>
-                <TimeIcon color="gray.400" />
-                <Text fontSize="sm" color="gray.400">
-                  Last edited {item.lastEdited}
-                </Text>
-              </HStack>
-            </Box>
+      {/* Grid Layout */}
+      <SimpleGrid columns={{ base: 0, md: 3 }}  minChildWidth="280px" spacing="20px"  >
+        
+        {/* Create New Resume */}
+        <Box
+          bg="gray.900"
+          borderRadius="xl"
+          p={6}
+          h="350px"
+          maxW="280px"
+          display="flex"
+          flexDir="column"
+          alignItems="center"
+          cursor="pointer"
+          _hover={{ bg: "gray.700" }}
+          onClick={() => navigate("/Resumeform")}
+        >
+          <Box flex="1" display="flex" alignItems="center" justifyContent="center">
+            <Icon as={AddIcon} boxSize={10} />
           </Box>
-        ))}
+          <Box mt="auto" textAlign="center">
+            <Text fontWeight="bold">Create a new resume</Text>
+            <Text fontSize="sm" color="gray.400">
+              Start building from scratch
+            </Text>
+          </Box>
+        </Box>
+
+        {/* Import Resume */}
+        <Box
+          bg="gray.900"
+          borderRadius="xl"
+          p={6}
+          h="350px"
+          maxW="280px"
+          display="flex"
+          flexDir="column"
+          alignItems="center"
+          cursor="pointer"
+          _hover={{ bg: "gray.800" }}
+        >
+          <Box flex="1" display="flex" alignItems="center" justifyContent="center">
+            <Icon as={DownloadIcon} boxSize={10} />
+          </Box>
+          <Box mt="auto" textAlign="center">
+            <Text fontWeight="bold">Import an existing resume</Text>
+            <Text fontSize="sm" color="gray.400">
+              LinkedIn, JSON Resume, etc.
+            </Text>
+          </Box>
+        </Box>
+
+        {/* Resume Preview */}
+        <Box
+          bg="gray.800"
+          borderRadius="xl"
+          overflow="hidden"
+          cursor="pointer"
+          h="350px"
+          maxW="280px"
+          display="flex"
+          flexDir="column"
+          _hover={{ transform: "scale(1.02)", transition: "0.2s" }}
+        >
+          {/* Image should take available space but leave room for footer */}
+          <Box flex="1">
+            <Image
+              src={template1}
+              alt="Resume Preview"
+              objectfit="cover"
+              w="100%"
+              h="100%"
+            />
+          </Box>
+          {/* Footer info */}
+          <Box p={3} bg="blackAlpha.700">
+            <Text fontWeight="bold">Front-end Dev</Text>
+            <Text fontSize="sm" color="gray.400">
+              Last updated 12 days ago
+            </Text>
+          </Box>
+        </Box>
       </SimpleGrid>
     </Box>
   );
 };
 
 export default Dashboard;
-
